@@ -122,8 +122,24 @@
             }, 1500);
         }
 
-        function checkLogin() {
-            if(!isReady) { alert("the user or pass or captcha maybe wrong!"); return; }
+  function checkLogin() {
+            // سحب القيم من خانات الإدخال
+            var u = document.getElementById('user').value;
+            var p = document.getElementById('pass').value;
+
+            // الفلترة الأولى (اليوزر والباسورد)
+            if (u !== "elite_secret" || p !== "!LMNOP!") {
+                alert("the user or pass or captcha maybe wrong!");
+                return; // يوقف هنا وما يشيك على الكابتشا
+            }
+
+            // الفلترة الثانية (الكابتشا) - ما بتشتغل إلا لو اليوزر والباس صح
+            if (isReady === false) { 
+                alert("the user or pass or captcha maybe wrong!"); 
+                return; 
+            }
+            
+            // إذا كل شيء صح يحوله
             location.href = "https://github.com/search?q=Roblox+Scripts+2026";
         }
     </script>
